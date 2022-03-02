@@ -1,0 +1,74 @@
+﻿@model SumanthInPaylocity.Models.EmployeeVM
+@{
+    ViewBag.Title = "Employee Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="text-justify">Employee Information</h2>
+@using (Html.BeginForm("EmployeeEntry", "CalculateDeductions"))
+{
+    <p class="text-info">
+       Enter the employee's information along with dependent's information, if any, to see the deductions 
+    </p>
+    <div class="row">
+        <div class="form-group col-lg-3" style="padding-top:7px;">       
+            <text style="font-weight:bold" >Employee Information</text>
+        </div>
+        <div class="form-group col-lg-3"> 
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First Name" })
+            @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-lg-3"> 
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last Name" })
+            @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
+        </div>
+        @Html.HiddenFor(m => m.Type)
+    </div>
+    <div class="form-group">
+        <br />
+        <p style="font-weight:bolder">Dependents Information</p>
+    </div>
+
+    <fieldset>
+        <div id="new-Dependent">
+            @foreach (var dependent in Model.Dependents)
+            {
+                Html.RenderPartial("~/Views/CalculateDeductions/_Dependents.cshtml", dependent);
+            }
+
+        </div>
+        <div class="form-group">
+            <br />
+            <input type="button" class="btn btn-primary" id="adddependent" name="adddependent" value="Add Dependent" />
+            <br />
+        </div>
+        <br />
+        <div>
+            <button class="btn btn-success" type="submit">Calculate Costs & Deductions </button>
+        </div>
+    </fieldset>
+
+    @section Scripts
+            {
+        <script type="text/javascript">
+                    $('#adddependent').on('click',
+                        function () {
+                            $.ajax({
+                                async: false,
+                                url: '/CalculateDeductions/AddNewDependent'
+                            }).done(function (partialView) {
+                                $('#new-Dependent').append(partialView);
+                            });
+                        });
+
+                    $(document).on('click', '#deleteRow',
+                        function deleteDependent () {
+                            var container = $(this).closest('.dependentRow');
+                            container.remove();
+                        });
+
+        </script>
+    }
+}
+

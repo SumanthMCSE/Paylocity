@@ -1,0 +1,98 @@
+﻿@model SumanthInPaylocity.Models.ResultsVM
+
+@{
+    ViewBag.Title = "Employee Deductions and Costs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<div>
+    <h2 class="text-center">Employee Deductions and Costs</h2>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> </th>
+                <th scope="col">PayCheck Deductions</th>
+                <th scope="col">Yearly Deductions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    @Html.LabelFor(m => m.EmployeePayCheckDeductions)
+                </th>
+                <td>
+                    @Html.DisplayFor(m => m.EmployeePayCheckDeductions) @if (@Model.EmployeeFinalPayCheckDeductions > 0m)
+                    {<text> ( Final Pay Check Deduction:  @Html.DisplayFor(m => m.EmployeeFinalPayCheckDeductions) ) </text>}
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.EmployeeYearlyDeductions)
+                </td>
+            </tr>
+            @if (Model.DependentsPayCheckDeductions != 0m && Model.DependentsYearlyDeductions != 0m)
+            {
+            <tr>
+                <th scope="row">
+                    @Html.LabelFor(m => m.DependentsPayCheckDeductions)
+                </th>
+                <td>
+                    @Html.DisplayFor(m => m.DependentsPayCheckDeductions)  @if (@Model.DependentsFinalPayCheckDeductions > 0m)
+                    {<text> ( Final Pay Check Deduction: @Html.DisplayFor(m => m.DependentsFinalPayCheckDeductions) ) </text>}
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.DependentsYearlyDeductions)
+                </td>
+            </tr>
+            }
+            <tr>
+                <th scope="row">
+                    @Html.LabelFor(m => m.TotalPayCheckDeductions)
+                </th>
+                <td>
+                    @Html.DisplayFor(m => m.TotalPayCheckDeductions)   @if (@Model.TotalFinalPayCheckDeductions > 0m)
+                    {<text> ( Final Pay Check Deduction: @Html.DisplayFor(m => m.TotalFinalPayCheckDeductions) ) </text>}
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.TotalYearlyDeductions)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.LabelFor(m => m.DeductedPayCheck)
+            </div>
+            <div class="col-lg-2">
+                @Html.DisplayFor(m => m.DeductedPayCheck)
+            </div>
+        </div>
+
+        @if (@Model.DeductedFinalPayCheck > 0m)
+        {
+            <div class="row">
+                <div class="col-lg-3">
+                    @Html.LabelFor(m => m.DeductedFinalPayCheck)
+                </div>
+                <div class="col-lg-2">
+                    @Html.DisplayFor(m => m.DeductedFinalPayCheck)
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.LabelFor(m => m.DeductedYearlyPayCheck)
+            </div>
+            <div class="col-lg-2">
+                @Html.DisplayFor(m => m.DeductedYearlyPayCheck)
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back to Employee Information Entry", "EmployeeEntry")
+</p>
