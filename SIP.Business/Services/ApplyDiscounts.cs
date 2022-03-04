@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SIP.Entities;
-using SIP.Business.Constants;
 
 namespace SIP.Business.Services
 {
@@ -14,7 +13,7 @@ namespace SIP.Business.Services
         {
             if ((person?.FirstName?.ToLower()?.StartsWith("a") ?? false) || (person?.LastName?.ToLower()?.StartsWith("a") ?? false))
             {
-                costs -= (costs * Constants.Constants.DISCOUNT_NAME_A);
+                costs -= (costs * Constants.DISCOUNT_NAME_A);
             }
 
             return costs;

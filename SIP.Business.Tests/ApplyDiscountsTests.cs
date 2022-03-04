@@ -25,10 +25,10 @@ namespace SIP.Business.Tests
             employee.LastName = "TestLast Name";
             employee.Type = EntityTypes.Employee;
 
-            var expectedValue = Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY;
+            var expectedValue = Constants.COST_OF_EMP_BENEFITS_YEARLY;
 
             // Act
-            var actualValue = _applyDiscounts.ApplyApplicableDiscounts(employee, Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY);
+            var actualValue = _applyDiscounts.ApplyApplicableDiscounts(employee, Constants.COST_OF_EMP_BENEFITS_YEARLY);
 
             // Assert
             Assert.IsTrue(expectedValue == actualValue);
@@ -43,10 +43,10 @@ namespace SIP.Business.Tests
             dependent.LastName = "TestLast Name";
             dependent.Type = EntityTypes.Spouse;
 
-            var expectedValue = Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY - (Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY * Constants.Constants.DISCOUNT_NAME_A);
+            var expectedValue = Constants.COST_OF_EMP_BENEFITS_YEARLY - (Constants.COST_OF_EMP_BENEFITS_YEARLY * Constants.DISCOUNT_NAME_A);
 
             // Act
-            var actualValue = _applyDiscounts.ApplyApplicableDiscounts(dependent, Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY);
+            var actualValue = _applyDiscounts.ApplyApplicableDiscounts(dependent, Constants.COST_OF_EMP_BENEFITS_YEARLY);
 
             // Assert
             Assert.IsTrue(expectedValue == actualValue);

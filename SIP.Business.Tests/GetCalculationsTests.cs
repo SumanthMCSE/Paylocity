@@ -29,7 +29,7 @@ namespace SIP.Business.Tests
             employee.FirstName = "TestFirst Name";
             employee.LastName = "TestLast Name";
             employee.Type = EntityTypes.Employee;
-            var expectedValue = Decimal.Round(Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY / Constants.Constants.NUMBER_OF_PAYCHECKS, 2);
+            var expectedValue = Decimal.Round(Constants.COST_OF_EMP_BENEFITS_YEARLY / Constants.NUMBER_OF_PAYCHECKS, 2);
 
             // Act
             var actualValue = _getCalculations.GetEmployeePayCheckDeductions(employee);
@@ -46,7 +46,7 @@ namespace SIP.Business.Tests
             employee.FirstName = "TestFirst Name";
             employee.LastName = "ATestLast Name";
             employee.Type = EntityTypes.Employee;
-            var expectedValue = Decimal.Round((Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY - (Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY * Constants.Constants.DISCOUNT_NAME_A)) / Constants.Constants.NUMBER_OF_PAYCHECKS, 2);
+            var expectedValue = Decimal.Round((Constants.COST_OF_EMP_BENEFITS_YEARLY - (Constants.COST_OF_EMP_BENEFITS_YEARLY * Constants.DISCOUNT_NAME_A)) / Constants.NUMBER_OF_PAYCHECKS, 2);
 
             // Act
             var actualValue = _getCalculations.GetEmployeePayCheckDeductions(employee);
@@ -63,7 +63,7 @@ namespace SIP.Business.Tests
             employee.FirstName = "TestFirst Name";
             employee.LastName = "TestLast Name";
             employee.Type = EntityTypes.Employee;
-            var expectedValue = Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY;
+            var expectedValue = Constants.COST_OF_EMP_BENEFITS_YEARLY;
 
             // Act
             var actualValue = _getCalculations.GetEmployeeYearlyDeductions(employee);
@@ -82,7 +82,7 @@ namespace SIP.Business.Tests
             dependent.LastName = "TestLast Name";
             dependent.Type = EntityTypes.Spouse;
             var dependents = new List<Dependent> { dependent };
-            var expectedValue = Decimal.Round(Constants.Constants.COST_OF_DEP_BENEFITS_YEARLY / Constants.Constants.NUMBER_OF_PAYCHECKS, 2);
+            var expectedValue = Decimal.Round(Constants.COST_OF_DEP_BENEFITS_YEARLY / Constants.NUMBER_OF_PAYCHECKS, 2);
 
             // Act
             var actualValue = _getCalculations.GetDependentPayCheckDeductions(dependents);
@@ -101,7 +101,7 @@ namespace SIP.Business.Tests
             dependent.Type = EntityTypes.Spouse;
             var dependents = new List<Dependent> { dependent };
 
-            var expectedValue = Constants.Constants.COST_OF_DEP_BENEFITS_YEARLY;
+            var expectedValue = Constants.COST_OF_DEP_BENEFITS_YEARLY;
 
             // Act
             var actualValue = _getCalculations.GetDependentYearlyPayCheckDeductions(dependents);
@@ -119,7 +119,7 @@ namespace SIP.Business.Tests
             employee.LastName = "TestLast Name";
             employee.Type = EntityTypes.Employee; 
 
-            var expectedValue = Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY;
+            var expectedValue = Constants.COST_OF_EMP_BENEFITS_YEARLY;
 
             // Act
             var actualValue = _getCalculations.GetYearlyDeductions(employee);
@@ -132,10 +132,10 @@ namespace SIP.Business.Tests
         public void TestGetPaycheckAfterDeductions()
         {
             // Arrange
-            var expectedValue = Constants.Constants.EMPLOYEE_SALARY - Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY;
+            var expectedValue = Constants.EMPLOYEE_SALARY - Constants.COST_OF_EMP_BENEFITS_YEARLY;
 
             // Act
-            var actualValue = _getCalculations.GetPaycheckAfterDeductions(Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY);
+            var actualValue = _getCalculations.GetPaycheckAfterDeductions(Constants.COST_OF_EMP_BENEFITS_YEARLY);
 
             // Assert
             Assert.IsTrue(expectedValue == actualValue);

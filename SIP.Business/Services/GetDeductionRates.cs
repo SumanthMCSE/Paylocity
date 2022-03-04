@@ -10,11 +10,11 @@ namespace SIP.Business.Services
         {
             if(entityType == EntityTypes.Employee)
             {
-                return Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY;
+                return Constants.COST_OF_EMP_BENEFITS_YEARLY;
             }
             else if(entityType == EntityTypes.Spouse || entityType == EntityTypes.Child)
             {
-                return Constants.Constants.COST_OF_DEP_BENEFITS_YEARLY;
+                return Constants.COST_OF_DEP_BENEFITS_YEARLY;
             }
             else
             {

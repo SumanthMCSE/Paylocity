@@ -21,7 +21,7 @@ namespace SIP.Business.Services
         }
         public decimal GetEmployeePayCheckDeductions(Employee person)
         {
-            return decimal.Round(Decimal.Divide(GetEmployeeYearlyDeductions(person), Constants.Constants.NUMBER_OF_PAYCHECKS), 2);
+            return decimal.Round(Decimal.Divide(GetEmployeeYearlyDeductions(person), Constants.NUMBER_OF_PAYCHECKS), 2);
         }
 
         public decimal GetEmployeeYearlyDeductions(Employee person)
@@ -31,7 +31,7 @@ namespace SIP.Business.Services
 
         public decimal GetDependentPayCheckDeductions(List<Dependent> dependents)
         {
-            return decimal.Round(Decimal.Divide(GetDependentYearlyPayCheckDeductions(dependents), Constants.Constants.NUMBER_OF_PAYCHECKS), 2);
+            return decimal.Round(Decimal.Divide(GetDependentYearlyPayCheckDeductions(dependents), Constants.NUMBER_OF_PAYCHECKS), 2);
         }
 
         public decimal GetDependentYearlyPayCheckDeductions(List<Dependent> dependents)
@@ -46,7 +46,7 @@ namespace SIP.Business.Services
 
         public decimal GetFinalPayCheckDeductions(decimal perPayCheckDeduction, decimal perYearDeductions)
         {
-            var calculatedTotalDeduction = perPayCheckDeduction * Constants.Constants.NUMBER_OF_PAYCHECKS;
+            var calculatedTotalDeduction = perPayCheckDeduction * Constants.NUMBER_OF_PAYCHECKS;
             decimal result = default(decimal);
 
             if (calculatedTotalDeduction < perYearDeductions)
@@ -63,12 +63,12 @@ namespace SIP.Business.Services
 
         public decimal GetPaycheckAfterDeductions(decimal deductions)
         {
-           return  Constants.Constants.EMPLOYEE_SALARY - deductions;
+           return  Constants.EMPLOYEE_SALARY - deductions;
         }
 
         public decimal GetYearlyPaycheckAfterDeductions(decimal deductions)
         {
-            return (Constants.Constants.EMPLOYEE_SALARY * Constants.Constants.NUMBER_OF_PAYCHECKS) - deductions;
+            return (Constants.EMPLOYEE_SALARY * Constants.NUMBER_OF_PAYCHECKS) - deductions;
         }
     }
 }

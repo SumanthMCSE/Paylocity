@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SIP.Business.Services;
+using SIP.Entities;
 using SIP.Entities.Enums;
 
 namespace SIP.Business.Tests
@@ -19,7 +20,7 @@ namespace SIP.Business.Tests
         public void TestGetDeductionRateEmployee()
         {
             // Arrange
-            var expectedValue = Constants.Constants.COST_OF_EMP_BENEFITS_YEARLY;
+            var expectedValue = Constants.COST_OF_EMP_BENEFITS_YEARLY;
 
             // Act
             var actualValue = _getDeductionRates.GetDeductionRate(EntityTypes.Employee);
@@ -32,7 +33,7 @@ namespace SIP.Business.Tests
         public void TestGetDeductionRateDependent()
         {
             // Arrange
-            var expectedValue = Constants.Constants.COST_OF_DEP_BENEFITS_YEARLY;
+            var expectedValue = Constants.COST_OF_DEP_BENEFITS_YEARLY;
 
             // Act
             var actualValue = _getDeductionRates.GetDeductionRate(EntityTypes.Spouse);
